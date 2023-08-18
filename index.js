@@ -1,6 +1,10 @@
 const express = require('express');
 const cors = require('cors');
 require('dotenv').config(); // This loads the environment variables from .env
+const Connecttomongo = require('./db');
+
+// Connecting to the mongodb server
+Connecttomongo();
 
 const app = express();
 app.use(cors());
