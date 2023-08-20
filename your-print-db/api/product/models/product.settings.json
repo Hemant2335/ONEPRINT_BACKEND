@@ -1,0 +1,34 @@
+{
+  "kind": "collectionType",
+  "collectionName": "products",
+  "info": {
+    "name": "Product",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "Productname": {
+      "type": "string"
+    },
+    "Price": {
+      "type": "integer",
+      "required": true
+    },
+    "Description": {
+      "type": "text"
+    },
+    "Slug": {
+      "type": "uid",
+      "targetField": "Productname"
+    },
+    "category": {
+      "model": "category",
+      "via": "products"
+    }
+  }
+}
