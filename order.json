@@ -1,0 +1,61 @@
+[{
+    "name": "Product 1",
+    "description": "This is the description of product 1.",
+    "price": 19.99,
+    "category": "615abf6ae758214554946a79", 
+    "stock": 50,
+    "sold": 10,
+    "photo": {
+      "data": "base64_encoded_image_data",
+      "contentType": "image/jpeg"
+    }
+},
+{
+    "name": "Product 2",
+    "description": "This is the description of product 2.",
+    "price": 29.99,
+    "category": "615abf6ae758214554946a79", 
+    "stock": 50,
+    "sold": 10,
+    "photo": {
+      "data": "base64_encoded_image_data",
+      "contentType": "image/jpeg"
+    }
+  },
+  {
+    "name": "Product 3",
+    "description": "This is the description of product 3.",
+    "price": 39.99,
+    "category": "615abf6ae758214554946a79",
+    "stock": 50,
+    "sold": 10,
+    "photo": {
+      "data": "base64_encoded_image_data",
+      "contentType": "image/jpeg"
+    }
+  },
+  {
+    "name": "Product 4",
+    "description": "This is the description of product 4.",
+    "price": 49.99,
+    "category": "615abf6ae758214554946a79", 
+    "stock": 50,
+    "sold": 10,
+    "photo": {
+      "data": "base64_encoded_image_data",
+      "contentType": "image/jpeg"
+    }
+  },
+  {
+    "name": "Product 5",
+    "description": "This is the description of product 5.",
+    "price": 59.99,
+    "category": "615abf6ae758214554946a79", 
+    "stock": 50,
+    "sold": 10,
+    "photo": {
+      "data": "base64_encoded_image_data",
+      "contentType": "image/jpeg"
+    }
+}]
+  

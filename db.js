@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const username = encodeURIComponent("do_one");
 const password = encodeURIComponent("Doone_456");
 
-const mongoURI = `mongodb+srv://${username}:${password}@cluster0.j52p8jv.mongodb.net/yourprint`;
+const mongoURI = `mongodb+srv://${username}:${password}@cluster0.j52p8jv.mongodb.net/stickerverse`;
 
 const ConnectToMongo = async () => {
     try {
