@@ -25,6 +25,11 @@ const productSchema = new Schema({
         ref: "Category",
         required: true
     },
+    genre : {
+        type: Schema.Types.ObjectId,
+        ref: "Genre",
+        required: true
+    },
     stock: {
         type: Number,
         required: true
