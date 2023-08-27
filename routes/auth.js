@@ -21,7 +21,7 @@ const db = getFirestore(app);
 
 const router = express.Router();
 
-// Endpoint for user registration at Port 5000 : http://localhost:5000/api/auth/register
+// Endpoint for user registration at Port 5000 : http://localhost:3000/api/auth/register
 
 router.post("/register", async (req, res) => {
   let Check = true;
@@ -33,6 +33,7 @@ router.post("/register", async (req, res) => {
       await setDoc(doc(db, "users", user.uid), {
         email: user.email,
         displayName: req.body.displayName,
+        isadmin: false,
       });
     } catch (error) { console.log("Cannot Access the database"); Check = false;}
 
@@ -47,7 +48,7 @@ router.post("/register", async (req, res) => {
 });
 
 
-// Endpoint for user login at Port 5000 : http://localhost:5000/api/user/login
+// Endpoint for user login at Port 5000 : http://localhost:3000/api/user/login
 
 router.post("/login", async (req, res) => {
   let Check = true;
@@ -55,7 +56,7 @@ router.post("/login", async (req, res) => {
     const userCred = await signInWithEmailAndPassword(auth, req.body.email, req.body.password);
     const user = userCred.user;
     console.log("User Logged In Successfully");
-    res.status(200).json({Check , uid : user.uid});
+    res.status(200).json({Check , uid : user.uid , isadmin : user.isadmin});
   } catch (error) {
     console.log(error, "Login Error");
     Check = false;
@@ -63,7 +64,7 @@ router.post("/login", async (req, res) => {
   }
 });
 
-//Endpoint to fetch the details of the user at Port 5000 : http://localhost:5000/api/user
+//Endpoint to fetch the details of the user at Port 5000 : http://localhost:3000/api/user
 
 router.get("/user/:uid", async (req, res) => {
   try {
