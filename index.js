@@ -12,6 +12,7 @@ app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));
 app.use('/api/product', require('./routes/product'));
+app.use('/api/dashboard', require('./routes/Dashboard'));
 
 
 app.listen(3000, () => {
