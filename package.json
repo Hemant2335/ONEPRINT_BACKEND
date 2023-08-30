@@ -20,7 +20,8 @@
     "firebase-sdk": "^0.0.0",
     "latest-version": "^7.0.0",
     "mongodb": "^5.7.0",
-    "mongoose": "^7.4.3"
+    "mongoose": "^7.4.3",
+    "multer": "^1.4.5-lts.1"
   },
   "devDependencies": {
     "typescript": "^5.1.6"

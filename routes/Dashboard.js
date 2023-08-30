@@ -1,5 +1,6 @@
 const express = require("express");
 const fetchuser = require("../middlewares/fetchuser");
+const multer = require('multer');
 const cloudinary = require('cloudinary');
 
 const router = express.Router();
@@ -11,21 +12,32 @@ cloudinary.v2.config({
   secure: true,
 });
 
-router.post("/upload/:uid", fetchuser ,async (req, res) => {
-// Path to the image you want to upload
-const imagePath = "C:\Users\knrt7\Downloads\poster.jpeg";
-// Upload the image to Cloudinary
-cloudinary.uploader.upload(imagePath, { folder: 'uploads' }, (error, result) => {
-  if (error) {
-    console.error('Upload error:', error);
-    res.status(400).send("Some Error Occured")
-  } else {
-    res.status(200).send({status : 'Upload successful', result : result})
-    console.log('Upload successful:', result);
-    // You can access the uploaded image URL using result.url
-  }
-});
+const storage = multer.memoryStorage(); // Stores file in memory as buffer
+const upload = multer({ storage: storage });
 
+router.post("/upload/:uid", fetchuser, upload.single('image') ,async (req, res) => {
+  try {
+    // Access the uploaded file from req.file
+    const fileBuffer = req.file.buffer;
+    
+    const result = await cloudinary.uploader.upload_stream(
+      { folder: 'uploads' },
+      (error, result) => {
+        if (error) {
+          console.error('Upload error:', error);
+          res.status(400).send("Some Error Occurred");
+        } else {
+          console.log('Upload successful:', result);
+          res.status(200).send({ status: 'Upload successful', result: result });
+        }
+      }
+    ).end(fileBuffer);
+
+  } catch (error) {
+    console.error('Upload error:', error);
+    res.status(400).send("Some Error Occurred");
+  }
+  
 });
 
 module.exports = router;
