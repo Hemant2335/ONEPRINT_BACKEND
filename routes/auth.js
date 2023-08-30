@@ -1,21 +1,10 @@
 const express = require("express");
 const { getAuth, createUserWithEmailAndPassword ,signInWithEmailAndPassword } = require("firebase/auth");
-const { initializeApp } = require("firebase/app");
+const app = require("../firebase_config");
 const { getFirestore, doc, setDoc ,getDoc } = require("firebase/firestore");
 require('dotenv').config(); // This loads the environment variables from .env
 
-// Initialize Firebase
-const firebaseConfig = {
-  apiKey: "AIzaSyBx5m_a_VToA564dZBn_mjymX-HCBT0uCo",
-  authDomain: "yourprint-fe255.firebaseapp.com",
-  projectId: "yourprint-fe255",
-  storageBucket: "yourprint-fe255.appspot.com",
-  messagingSenderId: "234659911880",
-  appId: "1:234659911880:web:d88160962efbd4fd566dfd",
-  measurementId: "G-MWZ4LG1T5N"
-};
 
-const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
 

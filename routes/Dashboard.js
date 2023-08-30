@@ -11,7 +11,7 @@ cloudinary.v2.config({
   secure: true,
 });
 
-router.post("/upload", fetchuser ,async (req, res) => {
+router.post("/upload/:uid", fetchuser ,async (req, res) => {
 // Path to the image you want to upload
 const imagePath = "C:\Users\knrt7\Downloads\poster.jpeg";
 // Upload the image to Cloudinary
