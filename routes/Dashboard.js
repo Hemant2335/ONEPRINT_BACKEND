@@ -2,6 +2,9 @@ const express = require("express");
 const fetchuser = require("../middlewares/fetchuser");
 const multer = require('multer');
 const cloudinary = require('cloudinary');
+const Products = require("../models/Products");
+const Category = require("../models/Category");
+const Genre = require("../models/Genre");
 
 const router = express.Router();
 
@@ -42,5 +45,25 @@ router.post("/upload/:uid", fetchuser, upload.single('image'), async (req, res) 
     res.status(400).send("Some Error Occurred");
   }
 });
+
+
+router.post("/uploadsubmit/:uid", fetchuser, async (req, res) => {
+  try {
+    const { name, description, price, category1, genre1, photo } = req.body;
+    const stock = 1000;
+    const category = await Category.findOne({ name: category1 });
+    const genre = await Genre.findOne({ name: genre1 });
+    const sold = 0;
+    const { uid } = req.params;
+    const product = new Products({
+      name, description, price, category, genre, stock, sold, photo, user: uid
+    })
+    const savedProduct = await product.save();
+    res.json(savedProduct);
+  } catch (error) {
+    console.error('Upload error:', error);
+    res.status(400).send("Some Error Occurred");
+  }
+})
 
 module.exports = router;

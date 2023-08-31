@@ -39,8 +39,8 @@ const productSchema = new Schema({
         default: 0
     },
     photo: {
-        data: Buffer,
-        contentType: String
+        type: String,
+        required: true
     },
 });
 
