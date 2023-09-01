@@ -49,8 +49,10 @@ router.post("/upload/:uid", fetchuser, upload.single('image'), async (req, res) 
 
 router.post("/uploadsubmit/:uid", fetchuser, async (req, res) => {
   try {
+    let Check = false;
     const { name, description, price, category1, genre1, photo } = req.body;
     const stock = 1000;
+    console.log(category1, genre1)
     const category = await Category.findOne({ name: category1 });
     const genre = await Genre.findOne({ name: genre1 });
     const sold = 0;
@@ -59,7 +61,8 @@ router.post("/uploadsubmit/:uid", fetchuser, async (req, res) => {
       name, description, price, category, genre, stock, sold, photo, user: uid
     })
     const savedProduct = await product.save();
-    res.json(savedProduct);
+    Check = true;
+    res.status(200).send({Check : Check , status: 'Upload successful', savedProduct: savedProduct });
   } catch (error) {
     console.error('Upload error:', error);
     res.status(400).send("Some Error Occurred");
