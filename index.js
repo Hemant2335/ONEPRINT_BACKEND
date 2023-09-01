@@ -7,7 +7,9 @@ const Connecttomongo = require('./db');
 Connecttomongo();
 
 const app = express();
-app.use(cors());
+app.use(cors({
+    origin: ['https://yourprint.netlify.app' , 'http://localhost:5173']// Allowec domains 
+  }));
 app.use(express.json());
 
 app.use('/api/auth', require('./routes/auth'));

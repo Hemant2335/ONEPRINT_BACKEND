@@ -16,6 +16,18 @@ router.get("/products", async(req, res) => {
     }
 });
 
+router.get("/products/:cat", async(req, res) => {
+
+    try {
+        const cat = await Category.findOne({ name: req.params.cat });
+        const products = await product.find({ category: cat });
+        res.json(products);
+    } catch (error) {
+        console.log("Some Error Occuered");
+        res.status(500).json({ error: "Internal Server Error" });
+    }
+});
+
 router.get("/category", async(req, res) => {
 
     try {
