@@ -29,7 +29,7 @@ router.get("/products/:productname", async(req, res) => {
     }
 });
 
-router.get("/products/:cat", async(req, res) => {
+router.get("/:cat", async(req, res) => {
 
     try {
         const cat = await Category.findOne({ name: req.params.cat });
